@@ -15,3 +15,5 @@ for i in range( r.randint(3,15) ):
         generatedWord += r.choice(vowels)
 
 print(generatedWord)
+
+# to self https://www.thoughtco.com/sounds-in-english-language-3111166
