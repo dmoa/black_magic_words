@@ -1,19 +1,32 @@
 # Stan O 2020
 # If you are reading this, I want you to do know I made this instead of studying
-
 import random as r
 
-consonants = list("qwrtyplkjhgfdszxcvbnm")
-vowels = list("aeiou")
+import click
 
-generatedWord = ""
 
-for i in range( r.randint(3,15) ):
-    if r.randint(1,2) == 1:
-        generatedWord += r.choice(consonants)
-    else:
-        generatedWord += r.choice(vowels)
+@click.command()
+@click.option('--lower-bound', default=3)
+@click.option('--upper-bound', default=15)
+def generate_word(lower_bound, upper_bound):
+    if upper_bound < lower_bound:
+        raise AttributeError("The lower bound must be greater than the upper bound.")
 
-print(generatedWord)
+    consonants = list("qwrtyplkjhgfdszxcvbnm")
+    vowels = list("aeiou")
 
-# to self https://www.thoughtco.com/sounds-in-english-language-3111166
+    generated_word = ""
+
+    for i in range(r.randint(lower_bound, upper_bound)):
+        if r.randint(1, 2) == 1:
+            generated_word += r.choice(consonants)
+        else:
+            generated_word += r.choice(vowels)
+
+    print(generated_word)
+
+    # to self https://www.thoughtco.com/sounds-in-english-language-3111166
+
+
+if __name__ == '__main__':
+    generate_word()
